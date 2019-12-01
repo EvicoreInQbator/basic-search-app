@@ -8,5 +8,5 @@ import java.util.List;
 
 @Local
 public interface PatientService {
-    public List<Patient> getAllPatients();
+    List<Patient> getAllPatients(String query);
 }

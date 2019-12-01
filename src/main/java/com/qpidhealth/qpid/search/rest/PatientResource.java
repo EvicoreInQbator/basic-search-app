@@ -4,6 +4,7 @@ import com.qpidhealth.qpid.search.domain.Patient;
 import com.qpidhealth.qpid.search.repository.PatientDao;
 import com.qpidhealth.qpid.search.services.PatientService;
 
+import javax.ejb.EJB;
 import javax.ejb.Lock;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
@@ -30,8 +31,8 @@ public class PatientResource {
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
     public Response searchPatients(@QueryParam("query") String query){
-        if(query == null) {
-            return Response.ok(patientService.getAllPatients()).build();
+        if(query != null) {
+            return Response.ok(patientService.getAllPatients(query)).build();
         }
         return Response.status(400).build();
     }
