@@ -12,10 +12,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-@Default
 public class PatientServiceImpl implements PatientService{
     @Inject
     private PatientDao patientDao;
+
+    public PatientServiceImpl() {
+    }
+
+    public PatientServiceImpl(PatientDao dao) {
+        this.patientDao = dao;
+    }
 
     @Override
     public List<Patient> getAllPatients(String query)
