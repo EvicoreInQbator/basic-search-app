@@ -24,8 +24,12 @@ import static javax.ejb.LockType.READ;
 @Lock(READ)
 public class PatientResource {
 
-    @Inject
     private PatientService patientService;
+
+    @Inject
+    public PatientResource(PatientService patientService) {
+        this.patientService = patientService;
+    }
 
     @GET
     @Path("/search")
